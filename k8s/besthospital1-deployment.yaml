@@ -2,8 +2,6 @@ apiVersion: apps/V1
 kind: Deployment
 metadata:
   name: besthospital1
-  labels:
-    app: besthospital1
 spec:
   replicas: 1
   selector:
@@ -18,4 +16,16 @@ spec:
         - name: besthospital1
           image: trialf0ojr5-docker-trial.jfrog.io/docker-jfrog-testing/test:v1
           ports:
-            - containerPort: 80
+            - containerPort: 8081
+---
+apiVersion: 1
+kind: Service
+metadata:
+  name: besthospital1
+spec:
+  selector: 
+    app: besthospital1
+  ports:
+    - portocol: TCP
+      port: 8081
+      targetPort: 8081
