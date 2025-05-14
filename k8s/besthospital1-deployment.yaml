@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/V1
 kind: Deployment
 metadata:
   name: besthospital1
@@ -10,12 +10,12 @@ spec:
     matchLabels:
       app: besthospital1
   template:
-    metadata:
+    metadata: 
       labels:
         app: besthospital1
     spec:
       containers:
-name: besthospital1
+        - name: besthospital1
           image: nginx:latest
           ports:
-containerPort: 80
+            - containerPort: 80
