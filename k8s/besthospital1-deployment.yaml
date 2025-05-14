@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: besthospital1
-          image: nginx:latest
+          image: trialf0ojr5-docker-trial.jfrog.io/docker-jfrog-testing/test:v1
           ports:
             - containerPort: 80
