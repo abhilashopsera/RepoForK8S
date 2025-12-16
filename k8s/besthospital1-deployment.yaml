@@ -1,48 +1,35 @@
-# -----------------------------
-# Namespace
-# -----------------------------
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: springboot
----
-# -----------------------------
-# Deployment
-# -----------------------------
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: besthospital1
+  name: besthospital
   namespace: springboot
   labels:
-    app: besthospital1
+    app: besthospital
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: besthospital1
+      app: besthospital
   template:
     metadata:
       labels:
-        app: besthospital1
+        app: besthospital
     spec:
       containers:
-name: besthospital1
-          image: trialo2zwg1.jfrog.io/docker-trial/master:latest    imagePullPolicy: Always
+name: besthospital
+          image: trialo2zwg1.jfrog.io/docker-trial/master:latest
+   imagePullPolicy: Always
           ports:
 containerPort: 8081
 ---
-# -----------------------------
-# Service
-# -----------------------------
 apiVersion: v1
 kind: Service
 metadata:
-  name: besthospital1
+  name: besthospital
   namespace: springboot
 spec:
   selector:
-    app: besthospital1
+    app: besthospital
   ports:
 protocol: TCP
       port: 8081
