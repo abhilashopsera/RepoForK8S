@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
 name: besthospital1
-          image: trialf0ojr5-docker-trial.jfrog.io/docker-jfrog-testing/test:v1
+          image: trialo2zwg1.jfrog.io/docker-trial/master:93db9ac2fdf36052b2729e3612425df47d1da813
    ports:
 containerPort: 8081
 ---
