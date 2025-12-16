@@ -16,11 +16,11 @@ spec:
         app: besthospital
     spec:
       containers:
-name: besthospital
+        - name: besthospital
           image: trialo2zwg1.jfrog.io/docker-trial/master:latest
-   imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
-containerPort: 8081
+            - containerPort: 8081
 ---
 apiVersion: v1
 kind: Service
@@ -31,7 +31,7 @@ spec:
   selector:
     app: besthospital
   ports:
-protocol: TCP
+    - protocol: TCP
       port: 8081
       targetPort: 8081
   type: ClusterIP
