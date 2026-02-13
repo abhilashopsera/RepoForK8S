@@ -10,3 +10,4 @@ EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "app.jar"]
 #JUST A COMMIT
 #jeust a new commit
+#jsut another new commit
