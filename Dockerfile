@@ -9,3 +9,4 @@ EXPOSE 8081
 # Run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
 #JUST A COMMIT
+#jeust a new commit
