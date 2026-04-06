@@ -1,0 +1,60 @@
+name: Update Opsera Pipeline via API
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-pipeline:
+    runs-on: ubuntu-latest
+
+    env:
+      OPSERA_URL: https://app.opsera.io
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create payload
+        run: |
+          cat <<EOF > payload.json
+          {
+            "action": "update",
+            "type": "pipeline",
+            "data": {
+              "_id": "67dd225c0c8c038d5ca3bf2d",
+              "name": "KAL - PIPELINE",
+              "steps": [
+                {
+                  "name": "Maven Build",
+                  "active": false
+                },
+                {
+                  "name": "Docker Build",
+                  "active": false
+                },
+                {
+                  "name": "Docker Push",
+                  "active": false
+                },
+                {
+                  "name": "Argo Deploy",
+                  "active": false
+                },
+                {
+                  "name": "Approval gate",
+                  "active": false
+                }
+              ]
+            }
+          }
+          EOF
+
+          echo "Payload created:"
+          cat payload.json
+
+      - name: Call Opsera API
+        run: |
+          curl -v -X POST "$OPSERA_URL/api/v2/actions"             -H "Content-Type: application/json"             -H "Authorization: Bearer ${{ secrets.OPSERA_API_TOKEN }}"             --data @payload.json             -o response.json
+
+          echo "==== RESPONSE ===="
+          cat response.json
